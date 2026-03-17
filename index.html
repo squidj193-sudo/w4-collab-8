@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>我們組的 Chatbot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <!-- 組長任務：把這裡改成你們組的名稱 -->
+      <h1>🤖 第 X 組的 Chatbot</h1>
+      <p class="subtitle">W4 多人協作練習</p>
+    </header>
+
+    <!-- 組員 A 任務：在這裡加上訊息計數顯示 -->
+    <!-- <p id="counter">訊息數：0</p> -->
+
+    <div id="chat-box">
+      <div class="message bot">
+        嗨！這是我們組一起做的 Chatbot 🎉
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input id="user-input" type="text" placeholder="輸入訊息...">
+      <button onclick="sendMessage()">送出</button>
+    </div>
+
+    <!-- 組員 B 任務：在這裡加上組員名單 -->
+    <footer>
+      <!-- 範例：<p>組員：王小明、李小花、陳大志</p> -->
+    </footer>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('user-input');
+      const chatBox = document.getElementById('chat-box');
+      const text = input.value.trim();
+
+      if (!text) return;
+
+      const userDiv = document.createElement('div');
+      userDiv.className = 'message user';
+      userDiv.textContent = text;
+      chatBox.appendChild(userDiv);
+
+      const botDiv = document.createElement('div');
+      botDiv.className = 'message bot';
+      // 組員 A 任務：修改這裡的回覆邏輯
+      botDiv.textContent = `你說了「${text}」！`;
+      chatBox.appendChild(botDiv);
+
+      input.value = '';
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    document.getElementById('user-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendMessage();
+    });
+  </script>
+
+</body>
+</html>
