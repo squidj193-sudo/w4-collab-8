@@ -3,7 +3,11 @@
    每位組員負責修改指定區塊
    ============================ */
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: sans-serif;
@@ -17,7 +21,7 @@ body {
 .container {
   background: white;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 480px;
   max-width: 95vw;
   overflow: hidden;
@@ -27,12 +31,21 @@ body {
    組長任務：修改這裡的顏色和樣式
    ──────────────────────────────────── */
 header {
-  background: #4f8ef7;   /* 改成你們組喜歡的顏色 */
+  background: #4f8ef7;
+  /* 改成你們組喜歡的顏色 */
   color: white;
   padding: 20px 24px;
 }
-header h1 { font-size: 20px; }
-header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+
+header h1 {
+  font-size: 20px;
+}
+
+header .subtitle {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
 
 /* ── chat-box ────────────────────────
    共用：不需修改
@@ -64,7 +77,8 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
    組員 A 任務：修改這裡的顏色
    ──────────────────────────────────── */
 .message.user {
-  background: #4caf87;   /* 改成你喜歡的顏色 */
+  background: #724832;
+  /* 改成你喜歡的顏色 */
   color: white;
   align-self: flex-end;
 }
@@ -89,11 +103,13 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
 }
 
 .input-area button {
-  background: #4f8ef7;   /* 改成你喜歡的顏色 */
+  background: #4f8ef7;
+  /* 改成你喜歡的顏色 */
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 8px;   /* 改成 50px 會變成膠囊形狀 */
+  border-radius: 8px;
+  /* 改成 50px 會變成膠囊形狀 */
   cursor: pointer;
   font-size: 14px;
 }
