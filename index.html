@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
   <title>我們組的 Chatbot</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="container">
     <header>
       <!-- 組長任務：把這裡改成你們組的名稱 -->
-      <h1>🤖 第 X 組的 Chatbot</h1>
+      <h1>🤖 第八組的 Chatbot</h1>
       <p class="subtitle">W4 多人協作練習</p>
+      <button class="dark-toggle" id="dark-mode-toggle">🌙 Mode</button>
     </header>
 
     <!-- 組員 A 任務：在這裡加上訊息計數顯示 -->
-    <!-- <p id="counter">訊息數：0</p> -->
+    <p id="counter">訊息數：0</p>
 
     <div id="chat-box">
       <div class="message bot">
@@ -26,6 +29,7 @@
     <div class="input-area">
       <input id="user-input" type="text" placeholder="輸入訊息...">
       <button onclick="sendMessage()">送出</button>
+      <button id="clear-btn" onclick="clearChat()">清除對話</button>
     </div>
 
     <!-- 組員 B 任務：在這裡加上組員名單 -->
@@ -35,6 +39,23 @@
   </div>
 
   <script>
+    const toggleBtn = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check localStorage for saved mode
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+      body.classList.add('dark');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      if (body.classList.contains('dark')) {
+        localStorage.setItem('dark-mode', 'enabled');
+      } else {
+        localStorage.setItem('dark-mode', 'disabled');
+      }
+    });
+
     function sendMessage() {
       const input = document.getElementById('user-input');
       const chatBox = document.getElementById('chat-box');
@@ -50,11 +71,22 @@
       const botDiv = document.createElement('div');
       botDiv.className = 'message bot';
       // 組員 A 任務：修改這裡的回覆邏輯
+      messageCount++;
+      document.getElementById('counter').textContent = `訊息數：${messageCount}`;
       botDiv.textContent = `你說了「${text}」！`;
       chatBox.appendChild(botDiv);
 
       input.value = '';
       chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function clearChat() {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.innerHTML = `
+        <div class="message bot">
+          嗨！這是我們組一起做的 Chatbot 🎉
+        </div>
+      `;
     }
 
     document.getElementById('user-input').addEventListener('keypress', function(e) {
@@ -63,4 +95,5 @@
   </script>
 
 </body>
+
 </html>
