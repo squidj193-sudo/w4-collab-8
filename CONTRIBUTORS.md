@@ -14,7 +14,7 @@
 | 組員 B | 葉書愷 | `feature/member-b` | 修改按鈕樣式 & 加 footer 名單 | ⬜ |
 | 組員 C | 吳東霖| `feature/member-c` | 加入歡迎訊息 & 自訂回覆邏輯 | ✅ |
 | 組員 D | 吳東霖| `feature/member-d` | 加入深色模式切換按鈕 | ⬜ |
-| 組員 E | （填名字）| `feature/member-e` | 加入清除對話功能 | ⬜ |
+| 組員 E | 吳東霖| `feature/member-e` | 加入清除對話功能 | ⬜ |
 
 狀態：⬜ 未開始 / 🔄 進行中 / ✅ 已完成 / 🔀 PR 已開 / ✔️ 已 Merge
 

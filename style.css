@@ -3,36 +3,129 @@
    每位組員負責修改指定區塊
    ============================ */
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg-color: #f0f4f8;
+  --container-bg: #ffffff;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --header-bg: #4f8ef7;
+  --header-text: #ffffff;
+  --bot-msg-bg: #f0f4f8;
+  --user-msg-bg: #4caf87;
+  --input-bg: #ffffff;
+  --input-border: #dddddd;
+  --footer-text: #999999;
+  --border-color: #eeeeee;
+  
+  /* New variables from user */
+  --bg-gradient: none;
+  --chat-bg: var(--container-bg);
+  --text-main: var(--text-primary);
+  --text-muted: var(--text-secondary);
+  --bot-bubble: var(--bot-msg-bg);
+  --user-bubble: var(--user-msg-bg);
+}
+
+body.dark {
+  /* 覆蓋全域變數，改為深色系配色 */
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1e2e 100%);
+  --chat-bg: rgba(30, 30, 46, 0.85);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --bot-bubble: #313244;
+  --user-bubble: #818cf8;
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  /* Compatibility with previous variables */
+  --bg-color: #0f172a;
+  --container-bg: #1e1e2e;
+  --text-primary: var(--text-main);
+  --text-secondary: var(--text-muted);
+  --header-bg: #0f172a;
+  --header-text: #ffffff;
+  --bot-msg-bg: var(--bot-bubble);
+  --user-msg-bg: var(--user-bubble);
+  --input-bg: #1e1e2e;
+  --input-border: rgba(255, 255, 255, 0.1);
+  --footer-text: var(--text-muted);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
-  font-family: sans-serif;
-  background-color: #f0f4f8;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  background-image: var(--bg-gradient);
+  color: var(--text-primary);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  background: white;
+  background: var(--chat-bg);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 480px;
   max-width: 95vw;
   overflow: hidden;
+  transition: background-color 0.3s, border-color 0.3s;
+  border: 1px solid var(--border-color);
+}
+
+body.dark .container {
+  border-color: rgba(255, 255, 255, 0.05);
 }
 
 /* ── header ──────────────────────────
    組長任務：修改這裡的顏色和樣式
    ──────────────────────────────────── */
 header {
-  background: #4f8ef7;   /* 改成你們組喜歡的顏色 */
-  color: white;
+  background: var(--header-bg);
+  /* 改成你們組喜歡的顏色 */
+  color: var(--header-text);
   padding: 20px 24px;
+  position: relative;
 }
-header h1 { font-size: 20px; }
-header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
+
+header h1 {
+  font-size: 20px;
+}
+
+header .subtitle {
+  font-size: 13px;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* ── dark-toggle ─────────────────── */
+.dark-toggle {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+body.dark .dark-toggle {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-toggle:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
 
 /* ── chat-box ────────────────────────
    共用：不需修改
@@ -55,18 +148,21 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
 }
 
 .message.bot {
-  background: #f0f4f8;
-  color: #333;
+  background: var(--bot-msg-bg);
+  color: var(--text-primary);
   align-self: flex-start;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 /* ── 使用者訊息 ──────────────────────
    組員 A 任務：修改這裡的顏色
    ──────────────────────────────────── */
 .message.user {
-  background: #4caf87;   /* 改成你喜歡的顏色 */
-  color: white;
+  background: var(--user-msg-bg);
+  /* 改成你喜歡的顏色 */
+  color: #ffffff;
   align-self: flex-end;
+  transition: background-color 0.3s;
 }
 
 /* ── input-area ──────────────────────
@@ -76,35 +172,64 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
   display: flex;
   padding: 16px;
   gap: 10px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
+  background: var(--container-bg);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+body.dark .input-area {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .input-area input {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
   font-size: 14px;
   outline: none;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+body.dark .input-area input {
+  background: #1e1e2e;
+  color: white;
 }
 
 .input-area button {
-  background: #4f8ef7;   /* 改成你喜歡的顏色 */
+  background: #ff6b6b;   /* 改成你喜歡的顏色 */
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 8px;   /* 改成 50px 會變成膠囊形狀 */
+  border-radius: 50px;   /* 改成 50px 會變成膠囊形狀 */
   cursor: pointer;
   font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+#clear-btn:hover {
+  background: #475569;
+}
+
+body.dark #clear-btn {
+  background: #334155;
+}
+
+body.dark #clear-btn:hover {
+  background: #1e293b;
 }
 
 /* ── footer ──────────────────────────
    組員 B 任務：加上組員名單樣式
    ──────────────────────────────────── */
 footer {
-  padding: 12px 24px;
+  padding: 16px 24px;
   text-align: center;
-  font-size: 12px;
-  color: #999;
-  border-top: 1px solid #f0f0f0;
+  font-size: 13px;
+  color: #555;
+  background-color: #fafafa;
+  border-top: 1px solid #eaeaea;
+  font-weight: bold;
 }
