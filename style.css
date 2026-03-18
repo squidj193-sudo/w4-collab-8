@@ -89,11 +89,11 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
 }
 
 .input-area button {
-  background: #4f8ef7;   /* 改成你喜歡的顏色 */
+  background: #ff6b6b;   /* 改成你喜歡的顏色 */
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 8px;   /* 改成 50px 會變成膠囊形狀 */
+  border-radius: 50px;   /* 改成 50px 會變成膠囊形狀 */
   cursor: pointer;
   font-size: 14px;
 }
@@ -102,9 +102,11 @@ header .subtitle { font-size: 13px; opacity: 0.85; margin-top: 4px; }
    組員 B 任務：加上組員名單樣式
    ──────────────────────────────────── */
 footer {
-  padding: 12px 24px;
+  padding: 16px 24px;
   text-align: center;
-  font-size: 12px;
-  color: #999;
-  border-top: 1px solid #f0f0f0;
+  font-size: 13px;
+  color: #555;
+  background-color: #fafafa;
+  border-top: 1px solid #eaeaea;
+  font-weight: bold;
 }
