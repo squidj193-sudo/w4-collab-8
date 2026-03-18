@@ -11,12 +11,13 @@
   --header-bg: #4f8ef7;
   --header-text: #ffffff;
   --bot-msg-bg: #f0f4f8;
-  --user-msg-bg: #4caf87;
+  --user-msg-bg: #724832;
+  /*組員A*/
   --input-bg: #ffffff;
   --input-border: #dddddd;
   --footer-text: #999999;
   --border-color: #eeeeee;
-  
+
   /* New variables from user */
   --bg-gradient: none;
   --chat-bg: var(--container-bg);
@@ -35,7 +36,7 @@ body.dark {
   --bot-bubble: #313244;
   --user-bubble: #818cf8;
   --border-color: rgba(255, 255, 255, 0.1);
-  
+
   /* Compatibility with previous variables */
   --bg-color: #0f172a;
   --container-bg: #1e1e2e;
@@ -199,11 +200,13 @@ body.dark .input-area input {
 }
 
 .input-area button {
-  background: #ff6b6b;   /* 改成你喜歡的顏色 */
+  background: #ff6b6b;
+  /* 改成你喜歡的顏色 */
   color: white;
   border: none;
   padding: 10px 20px;
-  border-radius: 50px;   /* 改成 50px 會變成膠囊形狀 */
+  border-radius: 50px;
+  /* 改成 50px 會變成膠囊形狀 */
   cursor: pointer;
   font-size: 14px;
   transition: background-color 0.3s;
@@ -233,6 +236,7 @@ footer {
   border-top: 1px solid #eaeaea;
   font-weight: bold;
 }
+
 /* ── 深色模式 (組員 D 任務) ────────────────── */
 body.dark {
   background-color: #1a1a1a;
@@ -241,7 +245,7 @@ body.dark {
 
 body.dark .container {
   background: #2d2d2d;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 body.dark header {
