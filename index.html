@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
+
 <head>
   <meta charset="UTF-8">
   <title>我們組的 Chatbot</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <div class="container">
@@ -15,7 +17,7 @@
     </header>
 
     <!-- 組員 A 任務：在這裡加上訊息計數顯示 -->
-    <!-- <p id="counter">訊息數：0</p> -->
+    <p id="counter">訊息數：0</p>
 
     <div id="chat-box">
       <div class="message bot">
@@ -35,6 +37,8 @@
   </div>
 
   <script>
+    let messageCount = 0;
+
     function sendMessage() {
       const input = document.getElementById('user-input');
       const chatBox = document.getElementById('chat-box');
@@ -50,6 +54,8 @@
       const botDiv = document.createElement('div');
       botDiv.className = 'message bot';
       // 組員 A 任務：修改這裡的回覆邏輯
+      messageCount++;
+      document.getElementById('counter').textContent = `訊息數：${messageCount}`;
       botDiv.textContent = `你說了「${text}」！`;
       chatBox.appendChild(botDiv);
 
@@ -57,10 +63,11 @@
       chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    document.getElementById('user-input').addEventListener('keypress', function(e) {
+    document.getElementById('user-input').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') sendMessage();
     });
   </script>
 
 </body>
+
 </html>
