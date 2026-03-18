@@ -14,10 +14,12 @@
       <!-- 組長任務：把這裡改成你們組的名稱 -->
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <div>
-          <h1>🤖 第 X 組的 Chatbot</h1>
+          <h1>🤖 第 8 組的 Chatbot</h1>
           <p class="subtitle">W4 多人協作練習</p>
         </div>
-        <button id="theme-toggle" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px;">🌙 深色模式</button>
+        <button id="theme-toggle"
+          style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px;">🌙
+          深色模式</button>
       </div>
     </header>
 
@@ -46,22 +48,13 @@
   </div>
 
   <script>
-    const toggleBtn = document.getElementById('dark-mode-toggle');
-    const body = document.body;
-
-    // Check localStorage for saved mode
-    if (localStorage.getItem('dark-mode') === 'enabled') {
-      body.classList.add('dark');
+    function updateCounter() {
+      const count = document.querySelectorAll('#chat-box .message').length;
+      document.getElementById('counter').textContent = `訊息數：${count}`;
     }
 
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark');
-      if (body.classList.contains('dark')) {
-        localStorage.setItem('dark-mode', 'enabled');
-      } else {
-        localStorage.setItem('dark-mode', 'disabled');
-      }
-    });
+    // 初始化計數器
+    updateCounter();
 
     function sendMessage() {
       const input = document.getElementById('user-input');
@@ -77,7 +70,7 @@
 
       const botDiv = document.createElement('div');
       botDiv.className = 'message bot';
-      
+
       // 組員 C 任務：自訂回覆邏輯
       let botResponse = '';
       if (text.includes('你好') || text.includes('哈囉') || text.includes('hi')) {
@@ -95,6 +88,7 @@
 
       input.value = '';
       chatBox.scrollTop = chatBox.scrollHeight;
+      updateCounter();
     }
 
     function clearChat() {
@@ -104,9 +98,10 @@
           嗨！這是我們組一起做的 Chatbot 🎉
         </div>
       `;
+      updateCounter();
     }
 
-    document.getElementById('user-input').addEventListener('keypress', function(e) {
+    document.getElementById('user-input').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') sendMessage();
     });
 
