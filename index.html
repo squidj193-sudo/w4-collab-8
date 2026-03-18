@@ -12,9 +12,13 @@
   <div class="container">
     <header>
       <!-- 組長任務：把這裡改成你們組的名稱 -->
-      <h1>🤖 第八組的 Chatbot</h1>
-      <p class="subtitle">W4 多人協作練習</p>
-      <button class="dark-toggle" id="dark-mode-toggle">🌙 Mode</button>
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h1>🤖 第 X 組的 Chatbot</h1>
+          <p class="subtitle">W4 多人協作練習</p>
+        </div>
+        <button id="theme-toggle" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 12px;">🌙 深色模式</button>
+      </div>
     </header>
 
     <!-- 組員 A 任務：在這裡加上訊息計數顯示 -->
@@ -104,6 +108,27 @@
 
     document.getElementById('user-input').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') sendMessage();
+    });
+
+    // 組員 D 任務：深色模式切換邏輯
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // 初始化：檢查 localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark');
+      themeToggle.textContent = '☀️ 淺色模式';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      if (body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        themeToggle.textContent = '☀️ 淺色模式';
+      } else {
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '🌙 深色模式';
+      }
     });
   </script>
 

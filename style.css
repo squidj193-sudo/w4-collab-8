@@ -233,3 +233,44 @@ footer {
   border-top: 1px solid #eaeaea;
   font-weight: bold;
 }
+/* ── 深色模式 (組員 D 任務) ────────────────── */
+body.dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+body.dark .container {
+  background: #2d2d2d;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+body.dark header {
+  background: #1e1e1e;
+  border-bottom: 1px solid #444;
+}
+
+body.dark #chat-box {
+  background: #2d2d2d;
+}
+
+body.dark .message.bot {
+  background: #3d3d3d;
+  color: #e0e0e0;
+}
+
+body.dark .input-area {
+  background: #2d2d2d;
+  border-top: 1px solid #444;
+}
+
+body.dark .input-area input {
+  background: #3d3d3d;
+  border: 1px solid #555;
+  color: white;
+}
+
+body.dark footer {
+  background: #222;
+  color: #777;
+  border-top: 1px solid #333;
+}
