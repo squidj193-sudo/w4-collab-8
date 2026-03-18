@@ -21,6 +21,9 @@
       <div class="message bot">
         嗨！這是我們組一起做的 Chatbot 🎉
       </div>
+      <div class="message bot">
+        我是組員<strong>吳東霖</strong>，歡迎來到我們的聊天室！試著跟我打聲招呼吧。
+      </div>
     </div>
 
     <div class="input-area">
@@ -49,8 +52,20 @@
 
       const botDiv = document.createElement('div');
       botDiv.className = 'message bot';
-      // 組員 A 任務：修改這裡的回覆邏輯
-      botDiv.textContent = `你說了「${text}」！`;
+      
+      // 組員 C 任務：自訂回覆邏輯
+      let botResponse = '';
+      if (text.includes('你好') || text.includes('哈囉') || text.includes('hi')) {
+        botResponse = '你好呀！很高興見到你。';
+      } else if (text.includes('你是誰') || text.includes('名字')) {
+        botResponse = '我是這組開發的智慧小助手，由吳東霖負責調整我的邏輯！';
+      } else if (text.includes('功能') || text.includes('幫助')) {
+        botResponse = '我可以陪你聊天，目前我還在學習中。你可以試著對我說「你好」或問我是誰。';
+      } else {
+        botResponse = `你說了「${text}」！這聽起來很有趣！`;
+      }
+
+      botDiv.textContent = botResponse;
       chatBox.appendChild(botDiv);
 
       input.value = '';
